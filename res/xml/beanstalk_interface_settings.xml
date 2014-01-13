@@ -105,6 +105,10 @@
         android:title="@string/gesture_anywhere_title" />
 
     <PreferenceScreen
+        android:fragment="com.android.settings.beanstalk.BatterySaverSettings"
+        android:title="@string/battery_saver_title" />
+
+    <PreferenceScreen
         android:key="buildprop_modder"
         android:icon="@drawable/ic_bsk_buildprop_modder"
         android:title="@string/propmodder_title"
