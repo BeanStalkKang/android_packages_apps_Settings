@@ -174,7 +174,10 @@ public class Settings extends PreferenceActivity
             R.id.accessibility_settings,
             R.id.print_settings,
             R.id.nfc_payment_settings,
-            R.id.home_settings
+            R.id.home_settings,
+            R.id.lock_screen_settings,
+            R.id.privacy_settings_cyanogenmod,
+            R.id.button_settings
     };
 
     private SharedPreferences mDevelopmentPreferences;
@@ -372,7 +375,8 @@ public class Settings extends PreferenceActivity
         ButtonSettings.class.getName(),
         MoreDeviceSettings.class.getName(),
         ProfilesSettings.class.getName(),
-        PolicyNativeFragment.class.getName()
+        PolicyNativeFragment.class.getName(),
+        com.android.settings.cyanogenmod.PrivacySettings.class.getName()
     };
 
     @Override
@@ -633,9 +637,13 @@ public class Settings extends PreferenceActivity
                 } else {
                     // Only show if NFC is on and we have the HCE feature
                     NfcAdapter adapter = NfcAdapter.getDefaultAdapter(this);
-                    if (!adapter.isEnabled() || !getPackageManager().hasSystemFeature(
-                            PackageManager.FEATURE_NFC_HOST_CARD_EMULATION)) {
-                        target.remove(i);
+                    if (adapter == null || !adapter.isEnabled()
+                            || !getPackageManager().hasSystemFeature(
+                                    PackageManager.FEATURE_NFC_HOST_CARD_EMULATION)) {
+                       target.remove(i);
+                       if (adapter == null) {
+                           Log.e(LOG_TAG, "NFC feature advertised but the default adapter is NULL!");
+                       }
                     }
                 }
             } else if (id == R.id.development_settings) {
