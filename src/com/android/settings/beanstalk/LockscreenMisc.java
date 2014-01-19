@@ -22,13 +22,18 @@ import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.content.ContentResolver;
+import android.preference.PreferenceGroup;
+import android.content.res.Resources;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.SeekBarPreference;
 import android.provider.Settings;
+import com.android.settings.cyanogenmod.ButtonSettings;
 
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.R;
@@ -41,11 +46,20 @@ public class LockscreenMisc extends SettingsPreferenceFragment implements OnPref
     private static final String KEY_SEE_TRHOUGH = "see_through";
     private static final String KEY_BLUR_BEHIND = "blur_behind";
     private static final String KEY_BLUR_RADIUS = "blur_radius";
+    private static final String KEY_BATTERY_STATUS = "lockscreen_battery_status";
+    private static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
+    private static final String HOME_UNLOCK_SCREEN = "home_unlock_screen";
+    private static final String MENU_UNLOCK_SCREEN = "menu_unlock_screen";
 
     private CheckBoxPreference mSeeThrough;
+    private ListPreference mBatteryStatus;
     private CheckBoxPreference mAllowRotation;
     private CheckBoxPreference mBlurBehind;
     private SeekBarPreference mBlurRadius;
+
+    private CheckBoxPreference mLockRingBattery;
+    private CheckBoxPreference mHomeUnlock;
+    private CheckBoxPreference mMenuUnlock;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,6 +72,23 @@ public class LockscreenMisc extends SettingsPreferenceFragment implements OnPref
         mAllowRotation = (CheckBoxPreference) findPreference(KEY_ALLOW_ROTATION);
         mAllowRotation.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.LOCKSCREEN_ROTATION, 0) == 1); 
+
+	mBatteryStatus = (ListPreference) findPreference(KEY_BATTERY_STATUS);
+        if (mBatteryStatus != null) {
+            mBatteryStatus.setOnPreferenceChangeListener(this);
+        }
+
+        mLockRingBattery = (CheckBoxPreference) findPreference(BATTERY_AROUND_LOCKSCREEN_RING);
+        mLockRingBattery.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, 0) == 1); 
+
+        mHomeUnlock = (CheckBoxPreference) findPreference(HOME_UNLOCK_SCREEN);
+        mHomeUnlock.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.HOME_UNLOCK_SCREEN, 0) == 1); 
+
+        mMenuUnlock = (CheckBoxPreference) findPreference(MENU_UNLOCK_SCREEN);
+        mMenuUnlock.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.MENU_UNLOCK_SCREEN, 0) == 1); 
 
         mBlurBehind = (CheckBoxPreference) findPreference(KEY_BLUR_BEHIND);
         mBlurBehind.setChecked(Settings.System.getInt(getContentResolver(), 
@@ -73,6 +104,15 @@ public class LockscreenMisc extends SettingsPreferenceFragment implements OnPref
     @Override
     public void onResume() {
         super.onResume();
+
+	// Update battery status
+        if (mBatteryStatus != null) {
+            ContentResolver cr = getActivity().getContentResolver();
+            int batteryStatus = Settings.System.getInt(cr,
+                    Settings.System.LOCKSCREEN_BATTERY_VISIBILITY, 0);
+            mBatteryStatus.setValueIndex(batteryStatus);
+            mBatteryStatus.setSummary(mBatteryStatus.getEntries()[batteryStatus]);
+        }
     }
 
     @Override
@@ -89,6 +129,24 @@ public class LockscreenMisc extends SettingsPreferenceFragment implements OnPref
                     ? 1 : 0);
             return true;
 
+        } else if (preference == mLockRingBattery) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, mLockRingBattery.isChecked()
+                    ? 1 : 0);
+            return true;
+
+        } else if (preference == mHomeUnlock) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.HOME_UNLOCK_SCREEN, mHomeUnlock.isChecked()
+                    ? 1 : 0);
+            return true;
+
+        } else if (preference == mMenuUnlock) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.MENU_UNLOCK_SCREEN, mMenuUnlock.isChecked()
+                    ? 1 : 0);
+            return true;
+
         } else if (preference == mBlurBehind) {
             Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_BLUR_BEHIND,
                     mBlurBehind.isChecked() ? 1 : 0);
@@ -98,13 +156,22 @@ public class LockscreenMisc extends SettingsPreferenceFragment implements OnPref
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
-    public boolean onPreferenceChange(Preference preference, Object value) {
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+	ContentResolver cr = getActivity().getContentResolver();
         if (preference == mBlurRadius) {
             Settings.System.putInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_BLUR_RADIUS, (Integer)value);
+                    Settings.System.LOCKSCREEN_BLUR_RADIUS, (Integer)objValue);
+            return true;
+	} else if (preference == mBatteryStatus) {
+            int value = Integer.valueOf((String) objValue);
+            int index = mBatteryStatus.findIndexOfValue((String) objValue);
+            Settings.System.putInt(cr, Settings.System.LOCKSCREEN_BATTERY_VISIBILITY, value);
+            mBatteryStatus.setSummary(mBatteryStatus.getEntries()[index]);
+            return true;
         }
 
-         return true;
+         return false;
     }
 
     public void updateBlurPrefs() {
