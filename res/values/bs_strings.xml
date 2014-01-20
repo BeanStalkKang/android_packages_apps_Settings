@@ -978,6 +978,7 @@
     <string name="title_tile_battery">Battery</string>
     <string name="title_tile_bluetooth">Bluetooth</string>
     <string name="title_tile_brightness">Brightness</string>
+    <string name="title_tile_contact">Contact</string>
     <string name="title_tile_custom">Custom</string>
     <string name="title_tile_sleep">Go to sleep</string>
     <string name="title_tile_location">Location</string>
@@ -1261,4 +1262,15 @@
     <string name="lockscreen_battery_status_charging">Only when charging</string>
     <string name="lockscreen_battery_status_alwayson">Always on</string>
     <string name="lockscreen_battery_status_alwaysoff">Always off</string>
+
+    <!-- QuickSettings: Quick Collapse -->
+    <string name="title_collapse_panel">Quick collapse</string>
+    <string name="summary_collapse_panel">Close the notification panel upon toggle</string>
+
+    <!-- QuickSettings: Smart Pulldown -->
+    <string name="smart_pulldown_title">Smart pulldown</string>
+    <string name="smart_pulldown_summary">Open Quick Settings when there are no %1$s notifications present</string>
+    <string name="smart_pulldown_off">Off</string>
+    <string name="smart_pulldown_dismissable">Dismissable</string>
+    <string name="smart_pulldown_persistent">Persistent</string>
 </resources>
