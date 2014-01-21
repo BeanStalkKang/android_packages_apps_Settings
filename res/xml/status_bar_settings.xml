@@ -30,9 +30,17 @@
             android:title="@string/battery_icon_title" />
 
         <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:id="@+id/battery_percentage_indicator"
             android:key="battery_percentage_indicator"
             android:title="@string/battery_percentage_indicator_title"
             android:summary="@string/battery_percentage_indicator_summary"
+            android:defaultValue="false" />
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:id="@+id/battery_percentage_indicator_plugged"
+            android:key="battery_percentage_indicator_plugged"
+            android:title="@string/battery_percentage_indicator_plugged_title"
+            android:summary="@string/battery_percentage_indicator_plugged_summary"
             android:defaultValue="false" />
 
 	<!-- Clock style -->
