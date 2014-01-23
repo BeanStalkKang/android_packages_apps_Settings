@@ -16,6 +16,11 @@
 	    android:title="@string/ad_settings_title"	
 	    android:summary="@string/ad_settings_summary" />
 
+        <PreferenceScreen
+	    android:key="lockscreen_notifcation_settings"
+	    android:title="@string/lockscreen_notifications"
+	    android:fragment="com.android.settings.probam.LockscreenNotifications" />
+
 	<PreferenceScreen
 	        android:key="edge_swipe_navigation"
 	        android:fragment="com.android.settings.cyanogenmod.EdgeSwipeNavigation"

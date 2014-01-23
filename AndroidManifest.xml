@@ -221,6 +221,12 @@
             </intent-filter>
         </receiver>
 
+	<!-- Lockscreen Notifications -->
+        <activity
+            android:name=".probam.LockscreenNotifications"
+            android:label="@string/Lockscreen_notifications_header" >
+        </activity>
+	
         <activity
             android:name=".beanstalk.service.BypassAlarm"
             android:configChanges="orientation|keyboardHidden|screenSize"
