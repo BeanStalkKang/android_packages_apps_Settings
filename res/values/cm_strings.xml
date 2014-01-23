@@ -267,6 +267,8 @@
     <string name="unlock_menu_unlock_summary">Pressing the menu button unlocks the device</string>
     <string name="unlock_home_unlock_title">Home unlock</string>
     <string name="unlock_home_unlock_summary">Pressing the home button unlocks the device</string>
+    <string name="unlock_camera_unlock_title">Camera unlock</string>
+    <string name="unlock_camera_unlock_summary">Pressing the camera button unlocks the device</string>
     <string name="unlock_quick_unlock_control_title">Quick unlock</string>
     <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
 
@@ -538,7 +540,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Sms security limit -->
     <string name="sms_security_check_limit_title">SMS message limit</string>
     <string name="sms_security_check_limit_summary">Apps can send %d messages in 30 minutes before requiring confirmation</string>
+    <string name="sms_security_check_limit_summary_none">Apps are not allowed to send any messages without confirmation</string>
     <string name="sms_security_check_limit_default">30 (Default)</string>
+    <string name="sms_security_check_limit_none">None</string>
 
     <!--- Lock clock -->
     <string name="lock_clock_title">Clock widget</string>
@@ -753,4 +757,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="brightness_slider_top">On top</string>
     <string name="brightness_slider_bottom">On the bottom</string>
     <string name="brightness_slider_none">Don\'t Show</string>
+
+    <!-- tap-to-wake -->
+    <string name="double_tap_to_wake_title">Double-tap to wake</string>
 </resources>
