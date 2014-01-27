@@ -195,9 +195,6 @@ public class PAPieControl extends SettingsPreferenceFragment
             if (pieOn && pieGravity == 3) {
                 Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_SHOW, 0);
-            } else {
-                Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_SHOW, 1);
             }
         }
     }
