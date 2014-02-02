@@ -1301,9 +1301,6 @@
     <string name="lockscreen_enable_power_menu_title">Enable power menu</string>
     <string name="lockscreen_enable_power_menu_summary">Show power menu when screen is locked</string>
 
-    <!-- Status bar color -->
-    <string name="status_bar_color">Status and navbar color</string>
-    <string name="status_bar_color_summary">This option restarts systemUI</string>
 
     <!-- Breathing Notifications -->
     <string name="breathing_notifications_title">Breathing Notifications</string>
