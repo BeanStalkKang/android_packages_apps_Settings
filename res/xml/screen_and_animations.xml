@@ -65,6 +65,18 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+	android:key="progressbar"
+	android:title="@string/progressbar_title" >
+
+    <PreferenceScreen
+        android:key="progressbar_settings"
+        android:fragment="com.android.settings.cyanogenmod.ProgressBar"
+        android:title="@string/progressbar_title" >
+    </PreferenceScreen>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
 	android:key="xposed_options"
 	android:title="@string/xposed_category_title" >
 
