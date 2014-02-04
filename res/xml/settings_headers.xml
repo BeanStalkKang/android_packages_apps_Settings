@@ -260,13 +260,9 @@
     <!-- Superuser -->
     <header
         android:id="@+id/superuser"
+        android:fragment="com.android.settings.cyanogenmod.superuser.PolicyNativeFragment"
         android:icon="@drawable/ic_action_permission"
-        android:title="@string/superuser">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="eu.chainfire.supersu"
-            android:targetClass="eu.chainfire.supersu.MainActivity" />
-    </header>
+        android:title="@string/superuser" />
 
     <!-- Date & Time -->
     <header
