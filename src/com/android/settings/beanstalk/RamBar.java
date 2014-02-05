@@ -56,9 +56,9 @@ public class RamBar extends SettingsPreferenceFragment implements OnPreferenceCh
 
     private static final String EXPLANATION_URL = "http://www.slimroms.net/index.php/faq/slimbean/238-why-do-i-have-less-memory-free-on-my-device";
 
-    static final int DEFAULT_MEM_COLOR = 0xff8d8d8d;
-    static final int DEFAULT_CACHE_COLOR = 0xff00aa00;
-    static final int DEFAULT_ACTIVE_APPS_COLOR = 0xff33b5e5;
+    static final int DEFAULT_MEM_COLOR = 0xffbbbbbb;
+    static final int DEFAULT_CACHE_COLOR = 0xffdddddd;
+    static final int DEFAULT_ACTIVE_APPS_COLOR = 0xffffffff;
 
     private ListPreference mRamBarMode;
     private ColorPickerPreference mRamBarAppMemColor;
