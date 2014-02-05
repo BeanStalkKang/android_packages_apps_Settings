@@ -33,6 +33,11 @@
         android:fragment="com.android.settings.beanstalk.RamBar"
         android:title="@string/ram_bar" />
 
+    <PreferenceScreen
+        android:key="alerts_and_warnings"
+        android:fragment="com.android.settings.beanstalk.AlertsAndWarnings"
+        android:title="@string/alerts_and_warnings_title" />
+
     <ListPreference
         android:key="media_scanner_on_boot"
         android:title="@string/media_scanner_on_boot_title"
