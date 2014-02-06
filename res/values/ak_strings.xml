@@ -307,4 +307,8 @@ Paranoid PIE control is wavely based on simple navigation to expanded desktop. S
     <string name="system_title">System</string>
     <string name="misc_title">Misc. Tweaks</string>
 
+    <!-- Text for forcing expanded notifications -->
+    <string name="force_expanded_notifications_title">Force Expanded Notifications</string>
+    <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
+
 </resources>

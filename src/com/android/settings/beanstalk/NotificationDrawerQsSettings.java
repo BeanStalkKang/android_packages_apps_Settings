@@ -60,6 +60,7 @@ public class NotificationDrawerQsSettings extends SettingsPreferenceFragment
     private static final String KEY_POWER_WIDGET = "power_widget";
     private static final String KEY_NOTIFICATION_DRAWER_TABLET = "notification_drawer_tablet";
     private static final String STATUS_BAR_CUSTOM_HEADER = "custom_status_bar_header";
+    private static final String FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
 
     private PreferenceScreen mPhoneDrawer;
     private PreferenceScreen mTabletDrawer;
@@ -70,6 +71,7 @@ public class NotificationDrawerQsSettings extends SettingsPreferenceFragment
     private CheckBoxPreference mStatusBarCustomHeader;
     ListPreference mSmartPulldown;
     CheckBoxPreference mCollapsePanel;
+    private CheckBoxPreference mForceExpanded;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,6 +94,11 @@ public class NotificationDrawerQsSettings extends SettingsPreferenceFragment
         mStatusBarCustomHeader.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1);
         mStatusBarCustomHeader.setOnPreferenceChangeListener(this);
+
+        mForceExpanded = (CheckBoxPreference) findPreference(FORCE_EXPANDED_NOTIFICATIONS);
+        mForceExpanded.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.FORCE_EXPANDED_NOTIFICATIONS, 0) == 1);
+        mForceExpanded.setOnPreferenceChangeListener(this);
 
         PackageManager pm = getPackageManager();
         boolean isMobileData = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
@@ -197,6 +204,11 @@ public class NotificationDrawerQsSettings extends SettingsPreferenceFragment
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getContentResolver(),
                 Settings.System.STATUS_BAR_CUSTOM_HEADER, value ? 1 : 0);
+            return true;
+        } else if (preference == mForceExpanded) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(),
+                Settings.System.FORCE_EXPANDED_NOTIFICATIONS, value ? 1 : 0);
             return true;
         } else if (preference == mQuickPulldown) {
             int statusQuickPulldown = Integer.valueOf((String) newValue);
