@@ -40,6 +40,12 @@
             <extra android:name="fragment" android:value="com.android.settings.beanstalk.fragments.PowerMenuFragment" />
      </PreferenceScreen>
 
+     <PreferenceScreen
+        android:id="@+id/lock_screen_settings"
+        android:fragment="com.android.settings.beanstalk.LockscreenInterface"
+        android:title="@string/lock_screen_title"
+        android:icon="@drawable/ic_settings_lockscreen" />
+
     </PreferenceCategory>
 
 
@@ -47,10 +53,26 @@
         android:title="@string/system_title">
 
     <PreferenceScreen
-        android:key="screen_and animations"
+        android:key="general_settings"
+        android:icon="@drawable/ic_bsk_general_settings"
+        android:fragment="com.android.settings.beanstalk.GeneralSettings"
+        android:title="@string/general_settings_title" />
+
+    <PreferenceScreen
+        android:key="screen_and_animations"
         android:icon="@drawable/ic_bsk_screen_and_animations"
         android:fragment="com.android.settings.beanstalk.ScreenAndAnimations"
         android:title="@string/screen_and_animations_title" />
+
+    <PreferenceScreen
+        android:id="@+id/themes_settings"
+        android:icon="@drawable/ic_settings_themes"
+        android:title="@string/themes_settings_title">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.tmobile.themechooser"
+            android:targetClass="com.tmobile.themechooser.ThemeChooser" />
+    </PreferenceScreen>
 
     <PreferenceScreen
 	android:key="misc_settings"
@@ -81,12 +103,6 @@
         android:icon="@drawable/ic_bsk_gesture_anywhere"
         android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
         android:title="@string/gesture_anywhere_title" />
-
-    <PreferenceScreen
-        android:key="general_settings"
-        android:icon="@drawable/ic_bsk_general_settings"
-        android:fragment="com.android.settings.beanstalk.GeneralSettings"
-        android:title="@string/general_settings_title" />
 
     <PreferenceScreen
         android:key="buildprop_modder"
