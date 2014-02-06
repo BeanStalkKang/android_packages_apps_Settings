@@ -311,4 +311,7 @@ Paranoid PIE control is wavely based on simple navigation to expanded desktop. S
     <string name="force_expanded_notifications_title">Force Expanded Notifications</string>
     <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
 
+    <!-- OmniSwitch -->
+    <string name="omniswitch_settings_title">OmniSwitch</string>
+
 </resources>
