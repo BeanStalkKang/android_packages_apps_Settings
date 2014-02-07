@@ -70,7 +70,6 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
 
     <permission
         android:name="android.permission.REQUEST_SUPERUSER"
@@ -198,6 +197,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+	
+        <activity
+            android:name=".fragments.DensityChanger"
+            android:label="@string/lcd_density_wizard" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+        </activity>	
 
         <!-- QuietHours SmsCall Service -->
 
