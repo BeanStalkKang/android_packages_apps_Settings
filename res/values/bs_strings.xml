@@ -1477,4 +1477,7 @@
     <string name="shortcut_action_help_pie_second_layer_delete_last_entry">Removing every %1$s in the list will disable the second pie layer entirely.</string>
     <string name="pie_warning_no_navigation_present">No other navigation is currently enabled. Turning off pie controls can result in an unusable device. Do you want to enable navigation bar instead?</string>
     <string name="pie_trigger_warning">Minimum one of the main triggers (bottom, left or right) needs to be enabled.</string>
+
+    <!-- BeanStalk Shortcuts -->
+    <string name="slim_shortcut_picker">BeanStalk Actions</string>
 </resources>
