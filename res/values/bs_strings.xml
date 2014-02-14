@@ -1481,4 +1481,7 @@
 
     <!-- BeanStalk Shortcuts -->
     <string name="slim_shortcut_picker">BeanStalk Actions</string>
+
+    <string name="volume_steps_title">Volume steps</string>
+    <string name="volume_steps_summary">Fine grained control of volume for specified sound streams</string>
 </resources>
