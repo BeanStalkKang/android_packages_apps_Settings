@@ -245,4 +245,8 @@ Paranoid PIE control is wavely based on simple navigation to expanded desktop. S
     <string name="expanded_desktop_system_bars_visibility">Show status and navigation bar</string>
     <string name="expanded_desktop_system_bars_visibility_summary">Show status and navigation bar in lock screen during expanded desktop mode</string>
 
+    <!-- QuickSettings haptic feedback -->
+    <string name="haptic_qs_tiles_title">Vibrate on touch</string>
+    <string name="haptic_qs_tiles_summary">Vibrate when touching tiles</string>
+
 </resources>
