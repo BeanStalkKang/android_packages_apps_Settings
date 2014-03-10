@@ -27,12 +27,14 @@ public class RamSettings extends SettingsPreferenceFragment implements
             "recents_memory_indicator_location";
     private static final String SHOW_RAMBAR_GB =
             "show_rambar_gb";
+    private static final String CUSTOM_RECENT_MODE = "custom_recent_mode";
 
     private CheckBoxPreference mRecentClearAll;
     private CheckBoxPreference mRambarGB;
     private ListPreference mRecentClearAllPosition;
     private CheckBoxPreference mShowRecentsMemoryIndicator;
     private ListPreference mRecentsMemoryIndicatorPosition;
+    private CheckBoxPreference mRecentsCustom;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,12 @@ public class RamSettings extends SettingsPreferenceFragment implements
         mRambarGB.setChecked(Settings.System.getInt(resolver,
                 Settings.System.SHOW_GB_RAMBAR, 0) == 1);
         mRambarGB.setOnPreferenceChangeListener(this);
+
+	boolean enableRecentsCustom = Settings.System.getBoolean(getContentResolver(),
+                                      Settings.System.CUSTOM_RECENT, false);
+        mRecentsCustom = (CheckBoxPreference) findPreference(CUSTOM_RECENT_MODE);
+        mRecentsCustom.setChecked(enableRecentsCustom);
+        mRecentsCustom.setOnPreferenceChangeListener(this);
 
         mShowRecentsMemoryIndicator = (CheckBoxPreference)
                 prefSet.findPreference(SHOW_RECENTS_MEMORY_INDICATOR);
@@ -86,6 +94,11 @@ public class RamSettings extends SettingsPreferenceFragment implements
 	} else if (preference == mRambarGB) {
             boolean value = (Boolean) objValue;
             Settings.System.putInt(resolver, Settings.System.SHOW_GB_RAMBAR, value ? 1 : 0);
+	} else if (preference == mRecentsCustom) { // Enable||disbale Slim Recent
+            Settings.System.putBoolean(getActivity().getContentResolver(),
+                    Settings.System.CUSTOM_RECENT,
+                    ((Boolean) objValue) ? true : false);
+            Helpers.restartSystemUI();
         } else if (preference == mRecentClearAllPosition) {
             String value = (String) objValue;
             Settings.System.putString(resolver, Settings.System.CLEAR_RECENTS_BUTTON_LOCATION, value);
