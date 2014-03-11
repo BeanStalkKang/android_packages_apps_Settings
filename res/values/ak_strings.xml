@@ -241,4 +241,7 @@ Paranoid PIE control is wavely based on simple navigation to expanded desktop. S
 
     <string name="shortcut_action_papie">PA Pie controls</string>
 
+    <string name="expanded_desktop_system_bars_visibility">Show status and navigation bar</string>
+    <string name="expanded_desktop_system_bars_visibility_summary">Show status and navigation bar in lock screen during expanded desktop mode</string>
+
 </resources>

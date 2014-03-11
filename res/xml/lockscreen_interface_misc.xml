@@ -23,6 +23,12 @@
             android:summary="@string/allow_rotate_summary"
             android:defaultValue="false" />
 
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="expanded_desktop_system_bars_visibility"
+            android:title="@string/expanded_desktop_system_bars_visibility"
+            android:summary="@string/expanded_desktop_system_bars_visibility_summary"
+            android:defaultValue="false" />
+
         <CheckBoxPreference
             android:key="battery_around_lockscreen_ring"
             android:title="@string/battery_around_lockscreen_ring"
