@@ -15,6 +15,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
+import com.android.settings.util.Helpers;
 
 public class RamSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
