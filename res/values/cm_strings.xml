@@ -741,4 +741,8 @@
 
     <!-- tap-to-wake -->
     <string name="double_tap_to_wake_title">Double-tap to wake</string>
+
+    <!-- Content description of the sync in progress icon for accessibility. [CHAR LIMIT=NONE] -->
+    <string name="accessibility_sync_in_progress">Sync in progress.</string>
+
 </resources>
