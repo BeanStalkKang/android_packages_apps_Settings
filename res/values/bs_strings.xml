@@ -1603,6 +1603,12 @@
     <string name="custom_recent_title">Enable Slim Recents</string>
     <string name="custom_recent_summary">Tick this box to switch between Slim/Stock RecentApps</string>
 
+    <string name="recent_panel_expanded_mode_title">Expanded mode</string>
+    <string name="recent_panel_expanded_mode_summary">Recent tasks expanded preview mode</string>
+    <string name="recent_panel_expanded_mode_auto">Auto (default)</string>
+    <string name="recent_panel_expanded_mode_always">Always</string>
+    <string name="recent_panel_expanded_mode_never">Never</string>
+
     <string name="clock_font_style_title">Font</string>
     <string name="clock_font_bold">Bold</string>
     <string name="clock_font_condensed">Condensed</string>
