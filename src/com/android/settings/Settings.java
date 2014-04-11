@@ -150,8 +150,6 @@ public class Settings extends PreferenceActivity
     private boolean mInLocalHeaderSwitch;
     private static Switch mTRDSSwitch;
 
-    private boolean mAttached;
-
     // Show only these settings for restricted users
     private int[] SETTINGS_FOR_RESTRICTED = {
             R.id.wireless_section,
@@ -282,18 +280,14 @@ public class Settings extends PreferenceActivity
     public void onResume() {
         super.onResume();
 
-        if (!mAttached) {
-            mAttached = true;
-            mDevelopmentPreferencesListener =
-                    new SharedPreferences.OnSharedPreferenceChangeListener() {
-                @Override
-                public void onSharedPreferenceChanged(
-                        SharedPreferences sharedPreferences, String key) {
-                    invalidateHeaders();
-                }
-            };
-            mDevelopmentPreferences.registerOnSharedPreferenceChangeListener(
-                    mDevelopmentPreferencesListener);
+        mDevelopmentPreferencesListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                invalidateHeaders();
+            }
+        };
+        mDevelopmentPreferences.registerOnSharedPreferenceChangeListener(
+                mDevelopmentPreferencesListener);
 
         ListAdapter listAdapter = getListAdapter();
         if (listAdapter instanceof HeaderAdapter) {
