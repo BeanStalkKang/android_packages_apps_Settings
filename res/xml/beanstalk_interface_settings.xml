@@ -106,6 +106,7 @@
 
     <PreferenceScreen
         android:fragment="com.android.settings.beanstalk.BatterySaverSettings"
+        android:icon="@drawable/ic_bsk_battery_saver"
         android:title="@string/battery_saver_title" />
 
     <PreferenceScreen
